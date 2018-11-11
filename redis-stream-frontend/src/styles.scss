@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+// Required
+// Your variable overrides
+
+$display1-size:               6rem !default;
+$display2-size:               4.5rem !default;
+$display3-size:               3.5rem !default;
+$display4-size:               2.5rem !default;
+
+$jumbotron-padding:                 1rem !default;
+
+// Bootstrap and its default variables
+@import "node_modules/bootstrap/scss/bootstrap";
+

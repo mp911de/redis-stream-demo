@@ -1,0 +1,68 @@
+<main role="main">
+
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Redis Feature Poll</h1>
+      <p>This is a demo application to demonstrate Redis Stream features.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-8">
+        <h2>What is your favorite Redis feature?</h2>
+
+        <p class="font-weight-light">Select your favorite Redis feature.</p>
+        <form>
+
+          <fieldset class="form-group">
+            <div class="row">
+              <legend class="col-form-label col-sm-2 pt-0">Feature</legend>
+              <div class="col-sm-10">
+                <div class="form-check" *ngFor="let option of options">
+                  <input class="form-check-input" type="radio" name="feature" id="{{option.option}}"
+                         value="{{option.option}}" (change)="onSelectionChange(option)"
+                         [attr.disabled]="canVote() ? null : ''">
+                  <label class="form-check-label" for="{{option.option}}"
+                         [attr.disabled]="canVote() ? null : ''">
+                    {{option.label}}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="form-row text-center">
+            <div class="col-md-8">
+              <button type="button" class="btn-lg" (click)="onSubmit()"
+                      [attr.disabled]="canVote() ? null : ''"
+                      [attr.aria-disabled]="canVote() ? null : ''"
+                      [ngClass]="{'disabled': canVote(), 'btn-primary' : canVote(), 'btn-light':!canVote() }">Submit
+                your vote
+              </button>
+            </div>
+          </div>
+
+        </form>
+
+        <p></p>
+        <div class="form-row">
+
+          <ngb-alert type="primary" [dismissible]="false" *ngIf="votingSuccess">
+            <strong>Vote placed</strong>
+            <p>Thank you!</p>
+          </ngb-alert>
+
+          <ngb-alert type="danger" [dismissible]="false" *ngIf="votingError">
+            <strong>Whoopsie!</strong>
+            <p>Something went wrong: {{votingErrorMessage}}</p>
+          </ngb-alert>
+        </div>
+      </div>
+    </div>
+    <hr>
+  </div> <!-- /container -->
+
+</main>
+
