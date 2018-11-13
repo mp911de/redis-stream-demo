@@ -56,7 +56,7 @@ class RedisConfiguration {
 	@ConditionalOnProperty("stream.poll-enabled")
 	public StreamReceiver<String, ObjectRecord<String, VoteMessage>> streamReceiver(
 			ReactiveRedisConnectionFactory factory) {
-		return StreamReceiver.create(factory, StreamReceiverOptions.builder().bodyType(VoteMessage.class).build());
+		return StreamReceiver.create(factory, StreamReceiverOptions.builder().targetType(VoteMessage.class).build());
 	}
 
 	@Bean
