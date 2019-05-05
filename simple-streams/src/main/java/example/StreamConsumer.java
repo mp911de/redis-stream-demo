@@ -27,11 +27,11 @@ import java.util.List;
 import java.util.logging.Logger;
 
 /**
- * Consume the stream {@code my_key}.
- * 
+ * Consume the stream {@code my_stream}.
+ *
  * @author Mark Paluch
  */
-@SuppressWarnings("unchecked")
+@SuppressWarnings({ "unchecked", "lettuce", "xconsume" })
 public class StreamConsumer {
 
 	private static final Logger LOGGER = Logger.getLogger("example.StreamConsumer");
@@ -52,8 +52,7 @@ public class StreamConsumer {
 				lastSeenMessage = message.getId();
 				LOGGER.info(String.format("Received %s", message));
 			}
-
-			Thread.sleep(1000);
 		}
+
 	}
 }

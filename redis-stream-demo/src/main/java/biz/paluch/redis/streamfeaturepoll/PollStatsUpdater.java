@@ -31,7 +31,7 @@ import org.springframework.data.redis.stream.StreamReceiver;
 /**
  * Updater component that listens to the Stream {@code feature_poll} and increments a counter in Sorted Set
  * {@code poll_stats}.
- * 
+ *
  * @author Mark Paluch
  */
 @RequiredArgsConstructor

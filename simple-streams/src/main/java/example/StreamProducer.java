@@ -21,14 +21,16 @@ import io.lettuce.core.api.sync.RedisStreamCommands;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
 /**
  * Write the current time to the Stream at key {@code my_stream}.
- * 
+ *
  * @author Mark Paluch
  */
+@SuppressWarnings({"unchecked", "lettuce", "wt", "xmap"})
 public class StreamProducer {
 
 	private static final Logger LOGGER = Logger.getLogger("example.StreamProducer");
