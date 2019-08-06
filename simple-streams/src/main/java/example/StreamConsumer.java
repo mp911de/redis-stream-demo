@@ -21,10 +21,11 @@ import io.lettuce.core.XReadArgs.Builder;
 import io.lettuce.core.XReadArgs.StreamOffset;
 import io.lettuce.core.api.StatefulRedisConnection;
 import io.lettuce.core.api.sync.RedisStreamCommands;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.logging.Logger;
 
 /**
  * Consume the stream {@code my_stream}.
@@ -34,7 +35,7 @@ import java.util.logging.Logger;
 @SuppressWarnings({ "unchecked", "lettuce", "xconsume" })
 public class StreamConsumer {
 
-	private static final Logger LOGGER = Logger.getLogger("example.StreamConsumer");
+	private static final Logger LOGGER = LogManager.getLogger(StreamConsumer.class);
 
 	public static void main(String[] args) throws Exception {
 

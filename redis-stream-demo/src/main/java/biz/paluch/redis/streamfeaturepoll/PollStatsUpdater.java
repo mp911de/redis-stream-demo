@@ -49,16 +49,15 @@ public class PollStatsUpdater {
 		Flux<ObjectRecord<String, VoteMessage>> feature_poll_stream = streamReceiver
 				.receive(StreamOffset.fromStart("feature_poll"));
 
-		subscription = feature_poll_stream //
-				.flatMap(it -> {
+		subscription = feature_poll_stream.flatMap(it -> {
 
-					log.info("Processing message: " + it);
+			log.info("Processing message: " + it);
 
-					VoteMessage vote = it.getValue();
+			VoteMessage vote = it.getValue();
 
-					return commands.zaddincr("poll_stats", 1, vote.getFeature());
-				}) //
-				.subscribe(x -> {}, Throwable::printStackTrace);
+			return commands.zaddincr("poll_stats", 1, vote.getFeature());
+
+		}).subscribe();
 	}
 
 	@PreDestroy
