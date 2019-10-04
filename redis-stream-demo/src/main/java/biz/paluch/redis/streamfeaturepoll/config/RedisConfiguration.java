@@ -43,16 +43,6 @@ import org.springframework.data.redis.stream.StreamReceiver.StreamReceiverOption
 class RedisConfiguration {
 
 	@Bean
-	public ReactiveRedisTemplate<String, String> reactiveRedisTemplate(ReactiveRedisConnectionFactory factory) {
-
-		RedisSerializationContext<String, String> serializationContext = RedisSerializationContext
-				.<String, String> newSerializationContext(RedisSerializer.string()).hashValue(SerializationPair.raw())
-				.hashKey(SerializationPair.raw()).build();
-
-		return new ReactiveRedisTemplate<>(factory, serializationContext);
-	}
-
-	@Bean
 	@ConditionalOnProperty("stream.poll-enabled")
 	public StreamReceiver<String, ObjectRecord<String, VoteMessage>> streamReceiver(
 			ReactiveRedisConnectionFactory factory) {

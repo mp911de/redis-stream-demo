@@ -25,7 +25,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * Append an {@link ObjectRecord} (object flattened into a hash) to the Stream {@code feature_poll}.
- * 
+ *
  * @author Mark Paluch
  */
 @Component
